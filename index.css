@@ -329,3 +329,89 @@ footer a {
     width: 100%;
   }
 }
+
+
+/* Automatically follow the user's OS/browser color-scheme preference. */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111315;
+    color: #d7d9dc;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #f1f3f5;
+  }
+
+  a {
+    color: #7db7ef;
+  }
+
+  footer {
+    color: #8f969e;
+  }
+
+  .pageContainer {
+    background-color: #1b1e21;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .headline span {
+    background-color: #272b2f;
+  }
+
+  .statusContainer {
+    border-color: #34383d;
+  }
+
+  .statusContainer + .statusContainer {
+    border-top-color: #34383d;
+  }
+
+  .statusUptime {
+    color: #a3a9b0;
+  }
+
+  .uptimeContainer {
+    color: #8f969e;
+  }
+
+  .uptimeContainer hr {
+    border-top-color: #34383d;
+  }
+
+  .nodata {
+    background-color: #30343a;
+    color: #9299a1;
+  }
+
+  .tooltip {
+    background-color: #25292d;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.35);
+    color: #d7d9dc;
+  }
+
+  .tooltip .tooltipArrow {
+    border-bottom-color: #25292d;
+  }
+
+  .tooltip .tooltipDateTime {
+    color: #a3a9b0;
+  }
+
+  .tooltip .tooltipKey {
+    color: #9299a1;
+  }
+
+  .tooltip .tooltipDescription {
+    color: #f1f3f5;
+  }
+
+  .tooltip hr {
+    border-top-color: #3a3f44;
+  }
+}

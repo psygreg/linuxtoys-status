@@ -34,16 +34,26 @@ do
 
   for i in 1 2 3 4;
   do
-    response=$(curl --write-out '%{http_code}' --silent --output /dev/null $url)
-    if [ "$response" -eq 200 ] || [ "$response" -eq 202 ] || [ "$response" -eq 301 ] || [ "$response" -eq 302 ] || [ "$response" -eq 307 ]; then
-      result="success"
-    else
-      result="failed"
-    fi
-    if [ "$result" = "success" ]; then
-      break
-    fi
-    sleep 5
+      response=$(curl \
+          --write-out '%{http_code}' \
+          --silent \
+          --show-error \
+          --output /dev/null \
+          "$url")
+
+      curl_exit=$?
+
+      echo "    Attempt $i: HTTP $response, curl exit $curl_exit"
+
+      if [ "$response" -eq 200 ] || \
+         [ "$response" -eq 202 ] || \
+         [ "$response" -eq 301 ] || \
+         [ "$response" -eq 302 ] || \
+         [ "$response" -eq 307 ]; then
+          result="success"
+      else
+          result="failed"
+      fi
   done
   dateTime=$(date +'%Y-%m-%d %H:%M')
   if [[ $commit == true ]]

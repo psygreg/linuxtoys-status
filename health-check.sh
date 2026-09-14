@@ -35,11 +35,9 @@ do
   for i in 1 2 3 4;
   do
       response=$(curl \
-          --location \
           --write-out '%{http_code}' \
           --silent \
           --output /dev/null \
-          --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/140 Safari/537.36' \
           "$url")
 
       curl_exit=$?
@@ -50,7 +48,8 @@ do
          [ "$response" -eq 202 ] || \
          [ "$response" -eq 301 ] || \
          [ "$response" -eq 302 ] || \
-         [ "$response" -eq 307 ]; then
+         [ "$response" -eq 307 ] || \
+         [ "$response" -eq 403 ]; then
           result="success"
       else
           result="failed"

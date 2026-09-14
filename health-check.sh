@@ -35,10 +35,11 @@ do
   for i in 1 2 3 4;
   do
       response=$(curl \
+          --location \
           --write-out '%{http_code}' \
           --silent \
-          --show-error \
           --output /dev/null \
+          --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/140 Safari/537.36' \
           "$url")
 
       curl_exit=$?
